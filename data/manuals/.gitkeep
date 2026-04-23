@@ -1,0 +1,2 @@
+# Coloca tus manuales técnicos en PDF (.pdf) o texto (.txt) en esta carpeta.
+# Luego ejecuta: python scripts/ingest.py

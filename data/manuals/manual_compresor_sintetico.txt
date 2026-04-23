@@ -1,0 +1,167 @@
+# MANUAL TÉCNICO - COMPRESOR INDUSTRIAL DE TORNILLO ROTATIVO
+## Modelo IC-750 / Serie XTR
+### Edición 2024 - Rev. 3.1
+
+---
+
+## 1. ESPECIFICACIONES GENERALES
+
+- Potencia nominal: 75 kW (100 HP)
+- Presión máxima de trabajo: 10 bar (145 psi)
+- Caudal de aire: 12.5 m³/min a 7 bar
+- Tensión de alimentación: 400V / 50Hz trifásica
+- Temperatura ambiente operativa: -5 °C a +45 °C
+- Nivel sonoro: 72 dB(A) a 1 metro
+- Peso en vacío: 1.450 kg
+
+---
+
+## 2. TABLA DE CÓDIGOS DE ERROR
+
+| Código | Descripción                                     | Severidad | Acción recomendada                                      |
+|--------|-------------------------------------------------|-----------|---------------------------------------------------------|
+| E01    | Sobrepresión en descarga (>10.5 bar)            | Crítica   | Parada inmediata. Revisar válvula de seguridad.         |
+| E02    | Temperatura de aceite elevada (>105 °C)         | Crítica   | Parada inmediata. Verificar nivel y calidad del aceite. |
+| E03    | Baja presión de aceite (<1.5 bar)               | Crítica   | Parada inmediata. Revisar bomba y filtros.              |
+| E04    | Sensor de temperatura desconectado              | Alta      | Revisar cableado del sensor PT100.                      |
+| E05    | Filtro de aire obstruido (ΔP > 50 mbar)         | Media     | Sustituir elemento filtrante. Código repuesto: AF-7501. |
+| E06    | Filtro de aceite obstruido                      | Media     | Sustituir cartucho. Código repuesto: OF-2204.           |
+| E07    | Separador aceite/aire saturado                  | Media     | Sustituir elemento separador. Código: SEP-3310.         |
+| E08    | Motor principal sobrecargado                    | Alta      | Verificar tensión de red y corriente en las 3 fases.    |
+| E09    | Secuencia de fases incorrecta                   | Alta      | Permutar dos fases en la acometida eléctrica.           |
+| E10    | Fallo en contactor principal                    | Alta      | Medir continuidad y sustituir si es necesario.          |
+| E11    | Presostato de línea defectuoso                  | Media     | Calibrar o sustituir presostato.                        |
+| E12    | Bajo nivel de aceite                            | Alta      | Rellenar con aceite ISO VG 46 hasta nivel MAX.          |
+| E13    | Temperatura ambiente fuera de rango             | Baja      | Verificar ventilación de la sala.                       |
+| E14    | Horas de mantenimiento superadas                | Informativ| Realizar servicio programado y resetear contador.       |
+| E15    | Fallo de comunicación con controlador           | Alta      | Revisar conexiones del PLC y reiniciar controlador.     |
+
+---
+
+## 3. ESPECIFICACIONES DE TORQUE DE APRIETE
+
+Los siguientes valores de torque son críticos. Utilice siempre una llave dinamométrica calibrada.
+
+| Componente                          | Torque (Nm) | Torque (lb·ft) | Secuencia       |
+|-------------------------------------|-------------|----------------|-----------------|
+| Pernos de la tapa del cabezal       | 85 ± 5      | 63 ± 4         | Cruzada, 3 pasos|
+| Tornillos del soporte del motor     | 120 ± 10    | 88 ± 7         | Diagonal, 2 pasos|
+| Tuercas de la brida de descarga     | 65 ± 5      | 48 ± 4         | En estrella     |
+| Tapón de drenaje de aceite          | 45 ± 3      | 33 ± 2         | Directo         |
+| Pernos del acoplamiento elástico    | 95 ± 8      | 70 ± 6         | Cruzada, 2 pasos|
+
+NOTA: Los torques se aplican con rosca limpia y lubricada con aceite ligero.
+No reutilice tornillos que presenten deformación o corrosión visible.
+
+---
+
+## 4. MANTENIMIENTO PREVENTIVO
+
+### 4.1 Cada 500 horas de operación
+- Inspección visual de fugas de aceite y aire.
+- Revisión de tensión de correas (si aplica).
+- Comprobación del nivel de aceite con el equipo parado y frío.
+- Limpieza exterior del radiador de aceite con aire comprimido a <3 bar.
+
+### 4.2 Cada 2.000 horas de operación
+- Cambio del filtro de aire (referencia AF-7501).
+- Cambio del filtro de aceite (referencia OF-2204).
+- Análisis de muestra de aceite (viscosidad, contenido de agua, partículas).
+- Calibración de presostato principal.
+
+### 4.3 Cada 4.000 horas de operación
+- Cambio completo de aceite lubricante (ISO VG 46, 28 litros).
+- Sustitución del elemento separador (referencia SEP-3310).
+- Revisión y reengrase de rodamientos del motor eléctrico.
+- Inspección del acoplamiento elástico; sustituir si hay grietas.
+
+### 4.4 Cada 8.000 horas o anualmente
+- Revisión general del cabezal de tornillo (inspección de holguras).
+- Prueba de válvula de seguridad a 11.5 bar.
+- Medición de aislamiento del motor (>10 MΩ a 500V DC).
+- Actualización del firmware del PLC si hay versión nueva disponible.
+
+---
+
+## 5. GUÍA DE SOLUCIÓN DE PROBLEMAS COMUNES
+
+### 5.1 El compresor no arranca
+**Causas probables:**
+1. Falta de tensión en la acometida.
+2. Disyuntor principal abierto o disparado.
+3. Error activo en el controlador (ver sección 2).
+4. Parada de emergencia pulsada.
+5. Presión de línea por encima del setpoint de parada.
+
+**Procedimiento de diagnóstico:**
+1. Verifique con voltímetro la tensión en los 3 bornes de entrada (400V ±10%).
+2. Revise el display del controlador; anote cualquier código E0x.
+3. Confirme que la seta de emergencia esté liberada.
+4. Verifique la presión en el manómetro de línea (<setpoint de arranque).
+
+### 5.2 El compresor arranca pero no carga
+**Causas probables:**
+1. Válvula de admisión atascada en posición cerrada.
+2. Electroválvula piloto defectuosa.
+3. Presostato fuera de calibración.
+4. Fuga importante en el circuito neumático interno.
+
+**Procedimiento de diagnóstico:**
+1. Con el equipo parado y despresurizado, revise el movimiento libre de la válvula de admisión.
+2. Mida tensión en bobina de la electroválvula piloto (24 VDC).
+3. Verifique el ajuste del presostato con un manómetro patrón.
+4. Aplique solución jabonosa en uniones para detectar fugas.
+
+### 5.3 Alto consumo de aceite
+**Causas probables:**
+1. Elemento separador saturado o roto.
+2. Retorno de aceite (línea scavenger) obstruido.
+3. Nivel de aceite por encima del máximo.
+4. Operación prolongada por encima de la presión nominal.
+
+**Procedimiento:**
+1. Inspeccione visualmente el separador al abrir el depósito.
+2. Desmonte y limpie el tubo de retorno y su filtro de malla.
+3. Ajuste el nivel al valor medio entre MIN y MAX con el equipo frío.
+
+### 5.4 Temperatura de descarga alta (>95 °C)
+**Causas probables:**
+1. Radiador de aceite sucio.
+2. Ventilador defectuoso o sentido de giro invertido.
+3. Nivel bajo de aceite.
+4. Termostato del by-pass atascado.
+
+**Herramientas necesarias:**
+- Pistola termográfica (rango 0-200 °C)
+- Anemómetro para comprobar flujo del ventilador
+- Llave dinamométrica 10-100 Nm
+- Juego de llaves Allen métricas
+
+**Precauciones de seguridad:**
+- Siempre despresurice el sistema antes de abrir cualquier línea.
+- Espere al menos 30 minutos tras la parada antes de tocar tuberías de descarga.
+- Utilice guantes resistentes al calor (EN 407).
+- Bloquee y etiquete el seccionador principal antes de intervenir (procedimiento LOTO).
+
+---
+
+## 6. PRECAUCIONES GENERALES DE SEGURIDAD
+
+- Presión residual: nunca abra el depósito separador sin verificar que el manómetro marque 0 bar.
+- Aceite caliente: el aceite puede alcanzar 90 °C durante la operación normal. Riesgo de quemaduras graves.
+- Partes rotativas: no retire nunca la carcasa de seguridad del acoplamiento con el equipo en marcha.
+- Riesgo eléctrico: el armario de control contiene elementos a 400V. Solo personal cualificado (cat. BR según IEC 60364).
+- Ruido: utilice protección auditiva (mínimo SNR 25 dB) en la sala de compresores.
+
+---
+
+## 7. REFERENCIAS DE REPUESTOS RÁPIDOS
+
+- Filtro de aire: AF-7501
+- Filtro de aceite: OF-2204
+- Elemento separador: SEP-3310
+- Aceite lubricante: ISO VG 46 sintético, presentación 20L (ref. OIL-VG46-20)
+- Kit acoplamiento elástico: COUP-KIT-750
+- Sensor temperatura PT100: TS-PT100-M10
+
+Fin del manual - Página 47 de 47.

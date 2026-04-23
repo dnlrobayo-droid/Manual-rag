@@ -1,0 +1,195 @@
+# MANUAL TÉCNICO - SISTEMA HIDRÁULICO INDUSTRIAL
+## Unidad de Potencia Hidráulica UHP-250
+### Edición 2024 - Rev. 2.0
+
+---
+
+## 1. DATOS TÉCNICOS GENERALES
+
+- Capacidad del depósito: 250 litros
+- Presión máxima de trabajo: 250 bar (3.625 psi)
+- Presión de tarado válvula de seguridad: 280 bar
+- Caudal nominal bomba principal: 85 L/min a 1.450 rpm
+- Fluido recomendado: aceite hidráulico HLP 46 (ISO VG 46)
+- Rango de temperatura operativa: 40 °C a 70 °C (óptimo: 45-55 °C)
+- Viscosidad a temperatura operativa: 25-35 cSt
+- Filtración nominal: 10 µm absoluta en línea de retorno
+
+---
+
+## 2. LÍMITES DE PRESIÓN Y TEMPERATURA
+
+| Parámetro                        | Mínimo | Nominal | Máximo | Acción si se supera           |
+|----------------------------------|--------|---------|--------|-------------------------------|
+| Presión de trabajo               | 20 bar | 180 bar | 250 bar| Revisar válvula limitadora    |
+| Presión pilotaje                 | 15 bar | 25 bar  | 40 bar | Ajustar reductora de presión  |
+| Temperatura de aceite            | 30 °C  | 50 °C   | 75 °C  | Parar y revisar intercambiador|
+| Temperatura de trabajo continuo  | 40 °C  | 55 °C   | 65 °C  | Optimizar refrigeración       |
+| Nivel de aceite (% capacidad)    | 70%    | 85%     | 95%    | Corregir nivel inmediatamente |
+| Contaminación (clase ISO 4406)   | 18/16/13| 19/17/14| 21/19/16| Cambiar filtros y fluido     |
+
+IMPORTANTE: Operar por encima de 70 °C reduce la vida útil del aceite a la mitad por cada 10 °C adicionales.
+
+---
+
+## 3. DIAGNÓSTICO DE FALLAS EN BOMBAS
+
+### 3.1 Bomba ruidosa (cavitación o aireación)
+**Síntomas:** Ruido agudo e intermitente, vibración anormal, espuma en el depósito.
+
+**Causas probables:**
+1. Nivel de aceite bajo.
+2. Filtro de aspiración obstruido.
+3. Entrada de aire por junta de succión.
+4. Viscosidad del aceite demasiado alta (arranque en frío).
+5. Velocidad de giro excesiva para la aplicación.
+
+**Procedimiento de diagnóstico:**
+1. Verifique nivel de aceite con la máquina parada (mirilla o varilla).
+2. Mida depresión en la aspiración (máximo permitido: -0.3 bar).
+3. Aplique aceite en uniones de aspiración; si el ruido cesa, hay fuga de aire.
+4. Precaliente el sistema hasta 40 °C antes de carga completa.
+
+### 3.2 Bomba no genera presión
+**Causas probables:**
+1. Válvula limitadora abierta o mal tarada.
+2. Fugas internas en la bomba (desgaste).
+3. Acoplamiento roto entre motor y bomba.
+4. Sentido de giro incorrecto (tras intervención eléctrica).
+5. Electroválvula direccional bloqueada en posición neutra.
+
+**Procedimiento:**
+1. Verifique flecha de sentido de giro en la carcasa de la bomba.
+2. Aísle la línea y cierre válvula limitadora gradualmente; observe manómetro.
+3. Mida caudal real con caudalímetro en línea; comparar con tabla de caudal nominal.
+4. Si el caudal es <70% del nominal, la bomba requiere reemplazo.
+
+### 3.3 Presión inestable o pulsante
+**Causas probables:**
+1. Acumulador hidráulico con precarga de nitrógeno incorrecta.
+2. Aire atrapado en el circuito (sistema no purgado correctamente).
+3. Válvula reductora defectuosa.
+4. Muelle de la válvula limitadora fatigado.
+
+---
+
+## 4. DIAGNÓSTICO DE FALLAS EN VÁLVULAS
+
+### 4.1 Válvula direccional no conmuta
+**Causas probables:**
+1. Bobina del solenoide quemada (medir resistencia: debe ser 12-18 Ω a 24 VDC).
+2. Contaminación atascando el carrete.
+3. Presión piloto insuficiente (<15 bar).
+4. Tensión de alimentación incorrecta.
+
+**Herramientas necesarias:**
+- Multímetro digital con medición de ohmios.
+- Llave Allen métrica (4, 5, 6 mm).
+- Banco de limpieza con aceite filtrado a 3 µm.
+
+### 4.2 Fuga interna en válvula proporcional
+**Causas:**
+1. Desgaste del carrete por contaminación.
+2. Deformación de la carcasa por sobrepresión previa.
+3. Cartucho de filtro pilotaje saturado.
+
+**Precauciones de seguridad:**
+- Despresurice la línea antes de cualquier desmontaje (ver sección 5).
+- Nunca afloje racores con el circuito bajo presión: riesgo de proyección de aceite a alta velocidad (pueden penetrar la piel y causar embolia grasa).
+- Utilice guantes nitrilo y gafas EN 166.
+
+---
+
+## 5. PROCEDIMIENTO DE PURGA DEL SISTEMA
+
+La purga es esencial tras cualquier intervención para eliminar el aire atrapado, que produce comportamiento errático, ruido y daño prematuro a componentes.
+
+### 5.1 Pasos detallados
+1. Verifique que el nivel de aceite esté entre MIN y MAX.
+2. Con la máquina parada, afloje los racores más altos de cada cilindro (no retire, solo aflojar 1-2 vueltas).
+3. Arranque la bomba a régimen bajo (si hay variador, 50% de velocidad).
+4. Accione manualmente cada cilindro a baja presión (<50 bar) con recorridos completos lentos.
+5. Observe salida de aceite sin burbujas por cada racor aflojado; apriete al torque correspondiente.
+6. Repita ciclo 5-10 veces por cilindro hasta eliminación total del aire.
+7. Verifique nivel y añada aceite si es necesario.
+8. Aumente gradualmente presión de trabajo mientras vigila temperatura y ruido.
+
+### 5.2 Torques recomendados tras purga
+- Racores de 1/4": 25 Nm
+- Racores de 3/8": 45 Nm
+- Racores de 1/2": 70 Nm
+- Racores de 3/4": 120 Nm
+- Tapones de válvulas: según especificación del fabricante del bloque
+
+---
+
+## 6. PROCEDIMIENTO DE CAMBIO DE FLUIDO HIDRÁULICO
+
+### 6.1 Frecuencia
+- Cambio estándar: cada 4.000 horas de operación o 24 meses.
+- Cambio anticipado: si el análisis de laboratorio detecta:
+  - TAN > 2.0 mg KOH/g
+  - Contenido de agua > 500 ppm
+  - Clase ISO 4406 peor que 21/19/16
+  - Viscosidad fuera de rango nominal ±10%
+
+### 6.2 Procedimiento
+1. Opere el sistema durante 30 minutos para alcanzar temperatura (50 °C).
+2. PARE la máquina y aplique procedimiento LOTO sobre el seccionador principal.
+3. Despresurice totalmente. Verifique con manómetro 0 bar.
+4. Coloque bandeja de recolección (mínimo 300 L) bajo el tapón de drenaje.
+5. Retire tapón; deje drenar al menos 60 minutos.
+6. Sustituya filtro de retorno (ref. FR-250-10) y filtro de aspiración (ref. FA-250-25).
+7. Apriete tapón de drenaje a 45 Nm con junta tórica nueva.
+8. Rellene con aceite nuevo HLP 46 (250 L) mediante grupo de llenado con filtro a 3 µm.
+9. Realice purga completa (sección 5).
+10. Registre en la bitácora de mantenimiento: fecha, horas, referencia del aceite y lote.
+
+### 6.3 Herramientas y materiales necesarios
+- Llave de tubo 24 mm para tapón de drenaje.
+- Grupo de llenado con filtro de 3 µm.
+- Filtro de retorno FR-250-10 (nuevo).
+- Filtro de aspiración FA-250-25 (nuevo).
+- Juntas tóricas: kit JT-UHP250.
+- Bandeja de recolección de 300 L.
+- 250 litros de aceite HLP 46.
+- Envase etiquetado para aceite usado (gestión según residuo peligroso LER 130110).
+
+---
+
+## 7. CHECKLIST DE INSPECCIÓN DIARIA
+
+Realizar al inicio de cada turno, con la máquina parada:
+
+- [ ] Nivel de aceite entre MIN y MAX en la mirilla.
+- [ ] Ausencia de fugas visibles en racores, mangueras y cilindros.
+- [ ] Indicador de colmatación del filtro de retorno en zona verde.
+- [ ] Temperatura del aceite ambiente normal al tacto (<40 °C en arranque).
+- [ ] Manómetro principal marca 0 bar con la bomba parada.
+- [ ] Ausencia de ruidos anormales al primer arranque (escuchar 30 s).
+- [ ] Verificación visual del estado de las mangueras (sin abombamientos ni fisuras).
+- [ ] Comprobar que las setas de emergencia no estén pulsadas.
+- [ ] Limpieza general del grupo hidráulico (sin derrames ni polvo excesivo).
+- [ ] Revisar bitácora: ¿hay alguna observación pendiente del turno anterior?
+
+---
+
+## 8. REFERENCIAS DEL MANUAL - SECCIONES CRUZADAS
+
+- Códigos de error electrohidráulicos: ver manual PLC-HYD-V3 (capítulo 8).
+- Esquema hidráulico completo: plano DW-UHP250-HYD-01.
+- Lista de repuestos: catálogo PART-UHP250-2024.
+- Fichas de seguridad del aceite: MSDS-HLP46 (proveedor).
+
+---
+
+## 9. CONTACTO DE SOPORTE TÉCNICO
+
+Para soporte técnico de nivel 2, contactar con el servicio técnico autorizado.
+Indicar siempre:
+- Número de serie de la unidad (placa de características lateral derecha).
+- Horas totales (display del controlador).
+- Código de error activo si aplica.
+- Descripción detallada del síntoma y condiciones operativas.
+
+Fin del manual - Página 58 de 58.
