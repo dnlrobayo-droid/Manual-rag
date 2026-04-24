@@ -1,24 +1,12 @@
-# ===== Core =====
 python-dotenv==1.0.1
-
-# ===== LLM =====
 anthropic==0.39.0
-
-# ===== Interfaz web =====
 streamlit==1.39.0
-
-# ===== Procesamiento de PDFs =====
 langchain==0.3.7
 langchain-community==0.3.5
 langchain-text-splitters==0.3.2
 pypdf==5.1.0
-
-# ===== Embeddings locales =====
-sentence-transformers==3.2.1
-
-# ===== Base de datos vectorial =====
 chromadb==0.5.20
-
-# ===== Utilidades =====
+onnxruntime==1.19.2
+tokenizers>=0.13.2
 tqdm==4.67.0
 numpy==1.26.4
