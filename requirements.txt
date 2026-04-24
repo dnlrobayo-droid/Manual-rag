@@ -15,7 +15,8 @@ pypdf==5.1.0
 
 # ===== Embeddings locales =====
 sentence-transformers==3.2.1
-torch==2.5.1
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
 
 # ===== Base de datos vectorial =====
 chromadb==0.5.20
