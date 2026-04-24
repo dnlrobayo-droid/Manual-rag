@@ -26,7 +26,6 @@ from app.utils import (  # noqa: E402
     ask_claude,
     get_index_stats,
     format_chunk_for_display,
-    get_embedding_model,
     get_chroma_client,
     ANTHROPIC_MODEL,
     EMBEDDING_MODEL,
@@ -179,7 +178,6 @@ with st.sidebar:
     if st.button("🔄 Recargar base de conocimiento", use_container_width=True):
         # Limpiar cachés de recursos (cliente Chroma, embeddings)
         get_chroma_client.cache_clear()
-        get_embedding_model.cache_clear()
         st.session_state.last_refresh = datetime.now()
         st.rerun()
 

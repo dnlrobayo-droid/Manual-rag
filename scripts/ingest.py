@@ -33,7 +33,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from app.utils import (  # noqa: E402
     MANUALS_DIR, CHUNK_SIZE, CHUNK_OVERLAP, CHROMA_COLLECTION,
-    get_chroma_client, get_embedding_model, get_collection,
+    get_chroma_client, get_collection,
 )
 
 
@@ -172,42 +172,24 @@ def compute_chunk_id(chunk: Dict[str, Any]) -> str:
     return f"{chunk['source']}::p{chunk['page']}::{h}"
 
 
-def index_chunks(chunks: List[Dict[str, Any]], reset: bool = False) -> None:
+def index_chunks(chunks, reset=False):
     client = get_chroma_client()
-
     if reset:
         try:
             client.delete_collection(CHROMA_COLLECTION)
-            print(f"🗑️  Colección '{CHROMA_COLLECTION}' eliminada.")
+            print(f"Colección '{CHROMA_COLLECTION}' eliminada.")
         except Exception:
             pass
-
     collection = get_collection(create_if_missing=True)
-    model = get_embedding_model()
-
     texts = [c["text"] for c in chunks]
     ids = [compute_chunk_id(c) for c in chunks]
-    metadatas = [
-        {"source": c["source"], "page": c["page"], "section": c["section"]}
-        for c in chunks
-    ]
-
-    print(f"🧠 Generando embeddings con SentenceTransformer (modelo local)...")
-    embeddings = model.encode(
-        texts,
-        show_progress_bar=True,
-        batch_size=32,
-        convert_to_numpy=True,
-    ).tolist()
-
-    # Insertar por lotes (ChromaDB tiene límite práctico por batch)
+    metadatas = [{"source": c["source"], "page": c["page"], "section": c["section"]} for c in chunks]
     BATCH = 256
-    print(f"💾 Insertando en ChromaDB (lotes de {BATCH})...")
+    print(f"Generando embeddings e insertando en ChromaDB (lotes de {BATCH})...")
     for i in tqdm(range(0, len(ids), BATCH), desc="Upsert", unit="lote"):
         collection.upsert(
             ids=ids[i:i + BATCH],
             documents=texts[i:i + BATCH],
-            embeddings=embeddings[i:i + BATCH],
             metadatas=metadatas[i:i + BATCH],
         )
 
